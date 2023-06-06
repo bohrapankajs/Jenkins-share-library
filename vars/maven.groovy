@@ -1,6 +1,6 @@
 def lintchecks() {
     sh " mvn checkstyle:check || true"
-    sh "Lint Check completed $COMPONENT"
+    sh "echo Lint Check completed $COMPONENT"
 }
 
 def call() {
