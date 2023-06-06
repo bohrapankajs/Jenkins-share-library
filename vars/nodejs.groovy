@@ -23,14 +23,14 @@ def call() {
                     }
                 } 
             }  
-            // stage('Sonat Check') {
-            //     steps {
-            //         script {
-            //             env.ARGS="-Dsonar.sources=."
-            //             common.sonarchecks()
-            //         }
-            //     } 
-            // } 
+            stage('Sonat Check') {
+                steps {
+                    script {
+                        // env.ARGS="-Dsonar.sources=."
+                        common.sonarchecks()
+                    }
+                } 
+            } 
             // stage('XYZ Check') {
             //     steps {
             //         script {
