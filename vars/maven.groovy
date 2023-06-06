@@ -21,15 +21,15 @@ def call() {
 
                 } 
             }  
-            // stage('Sonat Check') {
-            //     steps {
-            //         script {
-            //             sh "mvn clean compile"
-            //             env.ARGS="-Dsonar.java.binaries=target/"
-            //             common.sonarchecks()
-            //         }
-            //     } 
-            // } 
+            stage('Sonat Check') {
+                steps {
+                    script {
+                        sh "mvn clean compile"
+                        // env.ARGS="-Dsonar.java.binaries=target/"
+                        common.sonarchecks()
+                    }
+                } 
+            } 
             // stage('XYZ Check') {
             //     steps {
             //         script {
