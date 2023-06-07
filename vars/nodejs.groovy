@@ -10,9 +10,9 @@ def call() {
     pipeline{
         agent any
         environment {
-            SONAR    = credentials('SONAR')
+            // SONAR = credentials('SONAR')
             // NEXUS    = credentials('NEXUS')
-            SONARURL = "172.31.4.124"
+            // SONARURL = "172.31.4.124"
             // // NEXUSURL = "172.31.2.247"
         }
         stages {
