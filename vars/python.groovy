@@ -29,13 +29,47 @@ def call() {
                     }
                 } 
             } 
-            // stage('XYZ Check') {
-            //     steps {
-            //         script {
-            //             sh "echo xyz checks"
-            //         }
-            //     } 
-            // } 
+            stage('Test Cases') {
+                parallel {
+                    stage('Unit Test') {
+                        steps {
+                            script {
+                                sh "echo Unit test Completed"
+                            }
+                        }
+                    } 
+                    stage('Interation Test') {
+                        steps {
+                            script {
+                                sh "echo Integration test Completed"
+                            }
+                        }
+                    } 
+                    stage('Function Test') {
+                        steps {
+                            script {
+                                sh "echo Function test Completed"
+                            }
+                        }
+                    } 
+                }
+            }
+            stage('Preparing Artifacts') {
+                when { expression { env.TAG_NAME ==~ ".*" } }
+                steps {
+                    script {
+                        sh "echo Praparing Artifacts Completed"
+                    }
+                }
+            } 
+            stage('Uploading Artifacts') {
+                when { expression { env.TAG_NAME ==~ ".*" } }
+                steps {
+                    script {
+                        sh "echo Uploading Artifacts Completed"
+                    }
+                }
+            }
         } // end of stages
     } // end of pipeline
 }
