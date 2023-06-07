@@ -24,7 +24,7 @@ def call() {
             stage('Sonat Check') {
                 steps {
                     script {
-                        // env.ARGS="-Dsonar.sources=." 
+                        env.ARGS="-Dsonar.sources=." 
                         common.sonarchecks()
                     }
                 } 
