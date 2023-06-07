@@ -7,9 +7,9 @@ def call() {
     pipeline{
         agent any
         // environment {
-        //     SONAR    = credentials('SONAR')
+            SONAR    = credentials('SONAR')
         //     // NEXUS    = credentials('NEXUS')
-        //     SONARURL = "172.31.0.59"
+            SONARURL = "172.31.4.124"
         //     // NEXUSURL = "172.31.2.247"
         // }
         stages {
@@ -25,8 +25,8 @@ def call() {
                 steps {
                     script {
                         sh "mvn clean compile"
-                        // env.ARGS="-Dsonar.java.binaries=target/"
-                        common.sonarchecks()
+                        env.ARGS="-Dsonar.java.binaries=target/"
+                        common.mavenSonarchecks()
                     }
                 } 
             } 
