@@ -2,6 +2,7 @@ def call() {
     node {
         git branch: 'main', url: "https://github.com/bohrapankajs/${COMPONENT}.git"
         env.APPTYPE="python"
+        hifile.lintchecks()
         common.lintchecks()
         env.ARGS="-Dsonar.java.binaries=target/"
         common.sonarChecks()   
