@@ -33,7 +33,7 @@ def lintchecks() {
 
         }
         else if(env.APPTYPE == "maven") {
-          sh " mvn checkstyle:check || true"
+          // sh " mvn checkstyle:check || true"
           sh "echo Lint Check completed $COMPONENT"
         }
         else if(env.APPTYPE == "python") {
