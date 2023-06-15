@@ -89,6 +89,7 @@ def artifacts() {
         mvn clean package
         mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
         zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
+        ls -ltr
           ''' 
       }
       else if(env.APPTYPE == "python") {
@@ -113,7 +114,7 @@ def artifacts() {
     }
     stage('Upload Artifacts') {
       withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {              
-      sh "curl -f -v -o -X -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUSURL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"  
+      sh "curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUSURL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"  
       }
     }
   }
