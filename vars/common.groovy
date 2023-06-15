@@ -84,7 +84,7 @@ def artifacts() {
       }
       else if(env.APPTYPE == "maven") {
         sh '''
-        pwd
+        cd /home/centos/shipping
         hostname
         mvn clean package
         mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
